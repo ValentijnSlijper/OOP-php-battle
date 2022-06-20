@@ -1,19 +1,19 @@
-  <?php
-    require "pokemon.php";
-    require "pikachu.php";
-    require 'weakness.php';
-    require 'Energytype.php';
-    require 'attack.php';
-    require 'resistance.php';
+<?php
+  require "pokemon.php";
+  require "pikachu.php";
+  require 'weakness.php';
+  require 'Energytype.php';
+  require 'attack.php';
+  require 'resistance.php';
 
-    $lightningType = new Energytype("Lightning");
-        $fireType = new Energytype("Fire");
-        $waterType = new Energytype("Water");
-        $fightingType = new Energytype("Fighting");
+      $lightningType = new Energytype("Lightning",10);
+      $fireType = new Energytype("Fire",1.5);
+      $waterType = new Energytype("Water",2);
+      $fightingType = new Energytype("Fighting",20);
 
-    $pikachu = new Pikachu("Pikachu", $lightningType->getEnergyTypeName(), 60, 60, [new Attack("Pika Punch", 20), new Attack("Electric Ring", 50)],
-        new Weakness(1.5, $fireType->getEnergyTypeName()),
-        new Resistance(20, $fightingType->getEnergyTypeName()));
+  $pikachu = new Pikachu("Pikachu", $lightningType->getName(), 60, 60, [new Attack("Pika Punch", 20), new Attack("Electric Ring", 50)],
+      new Weakness($fireType->getEneryTypeValue(), $fireType->getName()),
+      new Resistance($fightingType->getEneryTypeValue(), $fightingType->getName()));
 
-  print_r($pikachu);
+print_r($pikachu);
 ?>
