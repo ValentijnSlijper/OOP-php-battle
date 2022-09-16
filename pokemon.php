@@ -13,11 +13,11 @@
       private $weakness;
       private $resistance;
 
-       public function __construct($name, $energyType, $hitPoints, $attacks, $weakness, $resistance) {
+       public function __construct($name, $energyType, $hitPoints, $health, $attacks, $weakness, $resistance) {
                    $this->name = $name;
                    $this->energyType = $energyType;
                    $this->hitPoints = $hitPoints;
-                   $this->health = $hitPoints;
+                   $this->health = $health;
                    $this->attacks = $attacks;
                    $this->weakness = $weakness;
                    $this->resistance = $resistance;
@@ -35,6 +35,9 @@
     public function getHitpoints(){
     	return $this->hitPoints;
     }
+    public function getHealth(){
+    	return $this->health;
+    }
 
     public function getAttack(){
     	return $this->attacks;
@@ -46,5 +49,27 @@
 
     public function getResistance(){
     	return $this->resistance;
+    }
+
+    public function attack($opponent, $attackIndex){
+      $attack = $this->getAttack()[$attackIndex];
+      $damage = $attack->getDamage();
+    if($this->energytype == $opponent->getWeakness()->getWeaknessType()){
+        return $damage = $damage * $opponent->getWeakness()->getWeaknessMultiplier();
+      }
+    if($this->energytype == $opponent->getResistance()->getResistanceType()){
+        return $damage = $damage - $opponent->getResistance()->getResistanceMultiplier();
+      }
+      $opponent->takeDamage($damage);
+    }
+
+
+    public function takeDamage($damage){
+      $this->health = $this->health - $damage;
+      if ($this->health <= 0) {
+        $this->health = 0;
+        self::$population--;
+      }
+      return $this->health;
     }
 }

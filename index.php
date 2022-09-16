@@ -20,5 +20,15 @@
   	new Weakness(2, $waterType->getEneryTypeValue(), $waterType->getName()),
   	new Resistance(10, $lightningType->getEneryTypeValue(), $lightningType->getName()));
 
-print_r($charmeleon);
+//  print_r($pikachu->getAttack()[1]->getDamage());
+
+
+    print_r($pikachu->getName()." attacks ". $charmeleon->getName()." with ". $pikachu->getAttack()[1]->getName()."!". "<br>");
+   	print_r("It did ". $pikachu->attack($charmeleon, 1)." damage!". "<br>");
+   	print_r($charmeleon->getName(). " now has ". $charmeleon->takeDamage($pikachu->attack($charmeleon, 1))." HP!". "<br>"."<br>");
+
+
+
+
+
 ?>
