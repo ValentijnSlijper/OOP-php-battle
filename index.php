@@ -1,6 +1,7 @@
 <?php
   require "pokemon.php";
   require "pikachu.php";
+  require "Charmeleon.php";
   require 'weakness.php';
   require 'Energytype.php';
   require 'attack.php';
@@ -15,5 +16,9 @@
       new Weakness($fireType->getEneryTypeValue(), $fireType->getName()),
       new Resistance($fightingType->getEneryTypeValue(), $fightingType->getName()));
 
-print_r($pikachu);
+  $charmeleon = new Charmeleon("Charmeleon", $fireType->getName(), 60, 60, [new Attack("Headbutt", 10), new Attack("Flare", 30)],
+  	new Weakness(2, $waterType->getEneryTypeValue(), $waterType->getName()),
+  	new Resistance(10, $lightningType->getEneryTypeValue(), $lightningType->getName()));
+
+print_r($charmeleon);
 ?>
