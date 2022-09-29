@@ -26,8 +26,7 @@
 
     print_r($pikachu->getName()." attacks ". $charmeleon->getName()." with ". $pikachu->getAttack()[1]->getAttackName()."!". "<br>");
    	print_r("It did ". $pikachu->attack($charmeleon, 1)." damage!". "<br>");
-
-
+    print_r('Charmeleon: ' . $charmeleon->getHealth() . '<br>');
 
 
 

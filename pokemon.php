@@ -50,38 +50,44 @@
     public function getResistance(){
     	return $this->resistance;
     }
+    public function setHealth($health){
+      $this->health = $health;
+    }
 
     public function attack($opponent, $attackIndex){
       $attack = $this->getAttack()[$attackIndex];
       // print_r($attack);
       $damage = $attack->getAttackDamage();
         // print_r($this->getType());
-        print_r('EnergyType: <br>');
-        print_r($this->energyType);
-        print_r('<br>');
-        print_r('Opponent: <br>');
-        print_r($opponent->getWeakness()->getWeaknessType());
-        print_r('<br>');
+        // print_r('EnergyType: <br>');
+        // print_r($this->energyType);
+        // print_r('<br>');
+        // print_r('Opponent: <br>');
+        // print_r($opponent->getWeakness()->getWeaknessType());
+        // print_r('<br>');
 
       if($this->energyType == $opponent->getWeakness()->getWeaknessType()){
-        return $damage = $damage * $opponent->getWeakness()->getWeaknessMultiplier();
-        print_r('je moeder');
+        $damage = $damage * $opponent->getWeakness()->getWeaknessMultiplier();
+        $this->takeDamage($damage, $opponent);
+        return $damage;
       }
       if($this->energyType == $opponent->getResistance()->getResistanceType()){
-        return $damage = $damage - $opponent->getResistance()->getResistanceMultiplier();
-        print_r('je moeder2');
+        $damage = $damage - $opponent->getResistance()->getResistanceMultiplier();
+        $this->takeDamage($damage, $opponent);
+        return $damage;
       }
       print_r($opponent->getWeakness()->getWeaknessMultiplier());
       $opponent->takeDamage($damage);
     }
 
 
-    public function takeDamage($damage){
-      $this->health = $this->health - $damage;
-      if ($this->health <= 0) {
-        $this->health = 0;
-        self::$population--;
+    public function takeDamage($damage, $opponent){
+      $health = $opponent->getHealth() - $damage;
+      if ($health <= 0) {
+        $health = 0;
+        // self::$population--;
       }
-      return $this->health;
+      $opponent->setHealth($health);
+      return $health;
     }
 }
