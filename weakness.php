@@ -12,7 +12,7 @@
             return $this->multiplier;
         }
 
-        public function getWeaknessEnergytype() {
+        public function getWeaknessType() {
             return $this->energyType;
         }
 

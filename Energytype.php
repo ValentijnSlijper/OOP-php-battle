@@ -1,9 +1,6 @@
 <?php
     class EnergyType {
 
-        const FIRE = 'Fire';
-        const LIGHTNING = 'Lightning';
-
         private $name;
         private $energyTypeValue;
 

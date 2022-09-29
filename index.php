@@ -4,7 +4,7 @@
   require "Charmeleon.php";
   require 'weakness.php';
   require 'Energytype.php';
-  require 'attack.php';
+  // require 'attack.php';
   require 'resistance.php';
 
       $lightningType = new Energytype("Lightning",10);
@@ -17,15 +17,15 @@
       new Resistance($fightingType->getEneryTypeValue(), $fightingType->getName()));
 
   $charmeleon = new Charmeleon("Charmeleon", $fireType->getName(), 60, 60, [new Attack("Headbutt", 10), new Attack("Flare", 30)],
-  	new Weakness(2, $waterType->getEneryTypeValue(), $waterType->getName()),
-  	new Resistance(10, $lightningType->getEneryTypeValue(), $lightningType->getName()));
+  	new Weakness($waterType->getEneryTypeValue(), $waterType->getName()),
+  	new Resistance($lightningType->getEneryTypeValue(), $lightningType->getName()));
 
 //  print_r($pikachu->getAttack()[1]->getDamage());
+    print_r('Pikachu: ' . $pikachu->getHealth() . '<br>');
+    print_r('Charmeleon: ' . $charmeleon->getHealth() . '<br>');
 
-
-    print_r($pikachu->getName()." attacks ". $charmeleon->getName()." with ". $pikachu->getAttack()[1]->getName()."!". "<br>");
+    print_r($pikachu->getName()." attacks ". $charmeleon->getName()." with ". $pikachu->getAttack()[1]->getAttackName()."!". "<br>");
    	print_r("It did ". $pikachu->attack($charmeleon, 1)." damage!". "<br>");
-   	print_r($charmeleon->getName(). " now has ". $charmeleon->takeDamage($pikachu->attack($charmeleon, 1))." HP!". "<br>"."<br>");
 
 
 

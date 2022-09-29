@@ -8,11 +8,11 @@
             $this->damage = $damage;
         }
 
-        public function getName() {
+        public function getAttackName() {
             return $this->name;
         }
 
-        public function getDamage() {
+        public function getAttackDamage() {
             return $this->damage;
         }
     }
