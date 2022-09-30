@@ -1,8 +1,5 @@
 <?php
-  // require 'weakness.php';
-  // require 'energytype.php';
   require 'attack.php';
-  // require 'resistance.php';
 
  class Pokemon{
       private $name;
