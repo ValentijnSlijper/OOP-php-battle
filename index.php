@@ -28,14 +28,18 @@
 
     print_r($pikachu->getName()." attacks ". $charmeleon->getName()." with ". $pikachu->getAttack()[1]->getAttackName()."!". "<br>");
    	print_r("It did ". $pikachu->attack($charmeleon, 1)." damage!". "<br>");
-    print_r('Charmeleon: ' . $charmeleon->getHealth() . '<br>');
+    print_r('Charmeleon: ' . $charmeleon->getHealth() . ' HP <br>');
+
 
     print_r('<br>');
 
     print_r($charmeleon->getName()." attacks ". $pikachu->getName()." with ". $charmeleon->getAttack()[1]->getAttackName()."!". "<br>");
     print_r("It did ". $charmeleon->attack($pikachu, 1)." damage!". "<br>");
-    print_r('Pikachu: ' . $pikachu->getHealth() . '<br>');
+    print_r('Pikachu: ' . $pikachu->getHealth() . ' HP <br>');
 
+    print_r('<br>');
+    
+    print_r("There are ". Pokemon::getPopulation(). " Pokemon alive");
 
 
 

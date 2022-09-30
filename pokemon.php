@@ -12,6 +12,7 @@
       private $attack;
       private $weakness;
       private $resistance;
+      private static $population = 0;
 
        public function __construct($name, $energyType, $hitPoints, $health, $attacks, $weakness, $resistance) {
                    $this->name = $name;
@@ -21,6 +22,7 @@
                    $this->attacks = $attacks;
                    $this->weakness = $weakness;
                    $this->resistance = $resistance;
+                   self::$population++;
 
                }
 
@@ -85,9 +87,12 @@
       $health = $opponent->getHealth() - $damage;
       if ($health <= 0) {
         $health = 0;
-        // self::$population--;
+        self::$population--;
       }
       $opponent->setHealth($health);
       return $health;
     }
+    public static function getPopulation(){
+     return self::$population;
+   }
 }
