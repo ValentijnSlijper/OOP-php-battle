@@ -65,11 +65,13 @@
         // print_r($opponent->getWeakness()->getWeaknessType());
         // print_r('<br>');
 
+        // als de energytype gelijk is aan de zwakte van de pokemon doet die de extra multiplyer damage
       if($this->energyType == $opponent->getWeakness()->getWeaknessType()){
         $damage = $damage * $opponent->getWeakness()->getWeaknessMultiplier();
         $this->takeDamage($damage, $opponent);
         return $damage;
       }
+      // als de energytype gelijk is aan de resistence van de pokemon doet die minder damage
       if($this->energyType == $opponent->getResistance()->getResistanceType()){
         $damage = $damage - $opponent->getResistance()->getResistanceMultiplier();
         $this->takeDamage($damage, $opponent);
@@ -79,11 +81,12 @@
       $opponent->takeDamage($damage);
     }
 
-
+    // pakt health van de oponent en doet de damage
     public function takeDamage($damage, $opponent){
       $health = $opponent->getHealth() - $damage;
       if ($health <= 0) {
         $health = 0;
+        //voert uit als de pokemon dood gaat
         self::$population--;
       }
       $opponent->setHealth($health);
