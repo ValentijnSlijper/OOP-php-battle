@@ -92,6 +92,7 @@
       $opponent->setHealth($health);
       return $health;
     }
+    //counts all objects up
     public static function getPopulation(){
      return self::$population;
    }
